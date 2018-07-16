@@ -1,0 +1,92 @@
+<html>
+<head>
+    <title>◦ Exercises ◦</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <style type="text/css">
+  .alto {
+  top:0px;
+  background-color:blue;
+}
+.basso {
+  bottom:0px;
+  background-color:red;
+}
+.sinistra {
+  left:0px;
+}
+.destra {
+  right:0px;
+}
+
+.quadrato {
+  width:5em;
+  height:5em;
+  position:absolute;
+  background-color:purple;
+  }
+
+#q1 {
+  background-color:red;
+}
+#q2 {
+  background-color:yellow;
+}
+#q3 {
+  background-color:green;
+}
+
+.centra {
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  }
+
+@keyframes oscillazione {
+  from{left:50%;}
+    25% {left:25%;}
+  50%{left:50%;}
+  75%{left:75%;}
+  to {left:50%;}
+}
+
+
+.oscilla {
+  animation: oscillazione 2s linear infinite;
+}
+
+body, html {
+  cursor: url("../img/maincursor.png"), auto;
+}
+a {
+  cursor: url("../img/back.png"), auto;
+}
+
+.freccia {
+  position: fixed;
+  top:10vh;
+  left:10vw;
+    }
+
+</style>
+</head>
+<body>
+  <div id="q1" class="quadrato sinistra alto"></div>
+<div id="q2" class="quadrato destra alto"></div>
+<div id="q3" class="quadrato destra basso"></div>
+<div id="q4" class="quadrato sinistra basso"></div>
+<a href="../main.html#exercises"><img class="freccia" src="../img/backfreccia.png"></a>
+<script>
+function centra() {
+  if($(this).hasClass("oscilla")){
+    $(this).removeClass("oscilla");
+      $(this).removeClass("centra")}
+
+ else if($(this).hasClass("centra"))
+    $(this).addClass("oscilla");
+  else
+    $(this).addClass("centra")
+}
+$(".quadrato").click(centra);
+</script>
+</body>
+</html>

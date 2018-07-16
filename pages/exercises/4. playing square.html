@@ -1,0 +1,201 @@
+<html>
+<head>
+    <title>◦ Exercises ◦</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <style type="text/css">
+
+  .s {
+    position: absolute;
+    width:30px;
+    height:30px;
+    background-color:green;
+    display: inherit;
+    opacity:0;
+    transform: translate(-50%, -50%);
+  }
+
+  .center {
+    left:50%;
+    top:50%;
+    opacity:1;
+    transform: translate(-50%, -50%);
+  }
+
+  .c {
+    position:absolute;
+    width:30px;
+    height:30px;
+    opacity:1;
+    display:inherit;
+    transform: translate(-50%, -50%);
+  }
+
+  .off {
+    left:100%;
+    top:50%;
+    opacity:1;
+    transform: translate(-50%, -50%);
+  }
+
+  .mariaesco {
+    animation: esce 3s forwards;
+    transform: translate(-50%, -50%);
+  }
+
+  @keyframes esce {
+    from {left:50%;
+      top:50%;
+      opacity:1;
+    }
+    to {left:110%;
+      top:50%;
+      opacity:1;
+    }
+  }
+
+  .mariaentro {
+    animation: entra 3s forwards;
+    background-color:blue;
+    border-radius:50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @keyframes entra{
+    from{left:100%;
+      top:50%;
+      opacity:1;
+      }
+    to{left:50%;
+      top:50%;
+      opacity:1;
+    }
+  }
+
+  .squadra {
+    animation: quadra 2s forwards;
+    border-radius: 0%;
+    background-color: red;
+    opacity:1;
+    position:absolute;
+    left:50%;
+    top:50%;
+  }
+
+  @keyframes quadra{
+    from{ border-radius:50%;
+      background-color: blue;
+      }
+    to{ border-radius: 0%;
+      background-color:red;
+    }
+  }
+
+  .ruota {
+    animation: giro 1s linear infinite;
+    left:50%;
+    top:50%;
+    position:absolute;
+
+  }
+
+  @keyframes giro {
+    from{ transform:translate(-50%,-50%)
+      rotate(0deg);
+      }
+    to{ transform:translate(-50%,-50%)
+      rotate(-360deg);
+      }
+  }
+
+  .riesco {
+    animation: esco2 2s forwards;
+    position:absolute;
+    transform: translate(-50%, -50%);
+  }
+
+  @keyframes esco2 {
+    from{left:50%;
+      top:50%;
+      }
+    to{left:110%;
+      top:50%;
+
+    }
+  }
+
+  .entro2 {
+    animation: entro2 2s forwards;
+    position:absolute;
+    transform: translate(-50%, -50%);
+  }
+
+  @keyframes entro2 {
+    from{left:100%;
+      top:50%;
+
+    }
+    to{left:50%;
+      top:50%;
+
+    }
+  }
+
+  body, html {
+    cursor: url("../img/maincursor.png"), auto;
+  }
+  a {
+    cursor: url("../img/back.png"), auto;
+  }
+
+  .freccia {
+    position: fixed;
+    top:10vh;
+    left:10vw;
+      }
+
+</style>
+</head>
+<body>
+  <div id="square" class="s center"></div>
+<div id="circle" class="c off"></div>
+<a href="../main.html#exercises"><img class="freccia" src="../img/backfreccia.png"></a>
+<script>
+function cambio() {
+  $("#square").addClass("mariaesco");
+  $("#circle").addClass("mariaentro");
+  }
+
+function cambeeo() {
+  $("#circle").addClass("squadra");
+}
+
+function rotazione() {
+  $("#circle").addClass("ruota");
+}
+
+function ricambio(){
+  $("#circle").addClass("riesco");
+    $("#square").addClass("entro2");
+}
+
+function al_2click() {
+  if($("#circle").hasClass("ruota"))
+    ricambio();
+  if($("#circle").hasClass("squadra"))
+    rotazione();
+  else if($("#circle").hasClass("mariaentro"))
+    cambeeo();
+}
+
+
+function al_click() {
+  if($("#square").hasClass("center"),
+   $("#circle").hasClass("off"))
+  cambio();
+  }
+
+
+$("#square").click(al_click);
+$("#circle").click(al_2click);
+</script>
+</html>

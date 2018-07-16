@@ -1,0 +1,121 @@
+<html>
+<head>
+    <title>◦ Exercises ◦</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style type="text/css">
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.s {
+  background-color: red;
+  height: 33vh;
+  width: 33vh;
+}
+
+.ls-off {
+  height: 0vh;
+  width: 0vh;
+}
+
+.ls-on {
+  background-color: yellow;
+  height: 16vh;
+  width: 16vh;
+}
+
+.rotate {
+  animation: rotation 0.5s forwards;
+}
+
+.rotate-orario {
+  animation: orario 1s infinite;
+}
+
+.rotate-antiorario {
+  animation: antiorario 1s infinite;
+}
+
+@keyframes rotation {
+  from {
+    transform: translate(-50%, -50%)
+rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(-225deg);
+  }
+}
+
+@keyframes orario {
+  from {
+    transform: translate(-50%, -50%)
+rotate(0deg);
+}
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes antiorario {
+  from {
+    transform: translate(-50%, -50%)
+rotate(0deg);
+}
+  to {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+body, html {
+  cursor: url("../img/maincursor.png"), auto;
+}
+a {
+  cursor: url("../img/back.png"), auto;
+}
+
+.freccia {
+  position: fixed;
+  top:10vh;
+  left:10vw;
+    }
+
+</style>
+</head>
+
+<body>
+  <div id="square" class="s center"></div>
+  <div id="littlesquare" class="ls-off center"></div>
+  <a href="../main.html#exercises"><img class="freccia" src="../img/backfreccia.png"></a>
+
+  <script type="text/javascript">
+  function ruota_quadrato_rosso() {
+    $("#square").addClass("rotate");
+  }
+
+  function disegna_quadrato_giallo() {
+    $("#littlesquare").addClass("ls-on");
+  }
+
+  function ruota_tutto() {
+    $("#square").addClass("rotate-orario");
+    $("#littlesquare").addClass("rotate-antiorario");
+  }
+
+  function al_click() {
+    if($("#littlesquare").hasClass("ls-on"))
+      ruota_tutto();
+    else if($("#square").hasClass("rotate"))
+      disegna_quadrato_giallo();
+    else
+      ruota_quadrato_rosso();
+  }
+
+  $("#square").click(al_click);
+  </script>
+
+</body>
+</html>

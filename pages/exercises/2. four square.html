@@ -1,0 +1,123 @@
+<html>
+<head>
+    <title>◦ Exercises ◦</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <style type="text/css">
+
+#box {
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:30em;
+  height:30em;
+  transform:translate(-50%,-50%);
+}
+
+.square {
+  position:absolute;
+  width:3em;
+  height:3em;
+  z-index:3;
+}
+
+#s-top-sx {
+  background-color: Navy;
+}
+
+#s-top-dx {
+  left:27em;
+  background-color:DodgerBlue;
+}
+
+#s-bottom-sx {
+  bottom:0px;
+  left:0px;
+  background-color: turquoise;
+  ;
+}
+
+#s-bottom-dx {
+  bottom:0px;
+  right:0px;
+  background-color: PaleTurquoise;
+}
+
+.scambioalto {
+  animation: scambio 1s forwards;
+}
+
+.riscambioalto {
+  animation: riscambio 1s forwards;
+}
+
+.gira {
+  animation: ruota 3s infinite;
+  position:center;
+}
+
+@keyframes scambio{
+  from {left:0em;
+  top:0em;}
+  to {left:27em;
+  top:0em;}
+}
+
+@keyframes riscambio{
+ from {left:27em;
+  top:0em;}
+  to {left:0em;
+  top:0em;}
+}
+
+@keyframes ruota{
+  from {transform:translate(-50%,-50%)
+    rotate(0deg);
+}
+  to {transform:translate(-50%,-50%)
+  rotate(360deg);}
+}
+
+body, html {
+  cursor: url("../img/maincursor.png"), auto;
+}
+a {
+  cursor: url("../img/back.png"), auto;
+}
+
+.freccia {
+  position: fixed;
+  top:10vh;
+  left:10vw;
+    }
+
+</style>
+</head>
+<body>
+<div id="box">
+<div id="s-top-sx" class="square"></div>
+<div id="s-top-dx" class="square"></div>
+<div id="s-bottom-sx" class="square"></div>
+<div id="s-bottom-dx" class="square"></div>
+</div>
+
+<a href="../main.html#exercises"><img class="freccia" src="../img/backfreccia.png"></a>
+
+
+<script>
+function scambio(){
+  if($("#box").hasClass("gira")){
+    $("#box").removeClass("gira")
+  }
+  else if($("#s-top-sx").hasClass("scambioalto"),
+$("#s-top-dx").hasClass("riscambioalto")){
+  $("#box").addClass("gira")
+}
+
+else  $("#s-top-sx").addClass("scambioalto");
+  $("#s-top-dx").addClass("riscambioalto")
+}
+
+$(".square").click(scambio);
+</script>
+</body>
+</html>
